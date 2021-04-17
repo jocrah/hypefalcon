@@ -1,0 +1,24 @@
+{
+    "name": "hypefalcon",
+    "version": "1.0.0",
+    "description": "Slack bot to recognize team effort",
+    "main": "index.js",
+    "scripts": {
+        "test": "npm test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jocrah/hypefalcon.git"
+    },
+    "keywords": [
+        "hype",
+        "kudo",
+        "slack"
+    ],
+    "author": "Joshua Ocrah <ocrahjoshua@gmail.com>",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jocrah/hypefalcon/issues"
+    },
+    "homepage": "https://github.com/jocrah/hypefalcon#readme"
+}
