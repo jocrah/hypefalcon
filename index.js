@@ -6,8 +6,8 @@ const db = require('./lib/resources/db')
 const port = 8000
 
 app.use(bodyParser.urlencoded({ extended: true }))
-    .post('/kudos', (req, res) => {
-        actions.processData(req.body)
+    .post('/kudos', async (req, res) => {
+        await actions.processData(req.body)
         return res.status(200).send()
     })
 
