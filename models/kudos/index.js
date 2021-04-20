@@ -7,8 +7,11 @@ const kudoModel = {
         return model.create(document)
     },
 
-    update(query, update) {
-        return model.updateOne(query, update)
+    update(id, update) {
+        return model.findByIdAndUpdate(id, update, {
+            new: true,
+            lean: true
+        })
     }
 }
 
