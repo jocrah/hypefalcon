@@ -12,6 +12,13 @@ const kudoModel = {
             new: true,
             lean: true
         })
+    },
+
+    fetch({ query, sort, limit }) {
+        return model.find(query, null, {
+            ...sort && { sort },
+            ...limit && { limit }
+        })
     }
 }
 
