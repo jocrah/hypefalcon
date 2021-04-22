@@ -19,6 +19,10 @@ const kudoModel = {
             ...sort && { sort },
             ...limit && { limit }
         })
+    },
+
+    remove(query) {
+        return model.deleteOne(query)
     }
 }
 
