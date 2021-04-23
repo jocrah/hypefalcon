@@ -23,6 +23,18 @@ const kudoModel = {
 
     remove(query) {
         return model.deleteOne(query)
+    },
+
+    groupCountByField({ field, limit }) {
+        const aggregationPipeline = [
+            { '$sortByCount': `$${field}` }
+        ]
+
+        if (limit) {
+            aggregationPipeline.push({ $limit: limit })
+        }
+
+        return model.aggregate(aggregationPipeline)
     }
 }
 
