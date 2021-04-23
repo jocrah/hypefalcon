@@ -5,7 +5,8 @@ const commands = {
     replace: require('./replace'),
     delete: require('./delete'),
     user: require('./user'),
-    list: require('./list')
+    list: require('./list'),
+    top: require('./top')
 }
 
 const commandNotFoundError = () => {
