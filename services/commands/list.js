@@ -11,5 +11,8 @@ module.exports = async text => {
         },
         ...limit && { limit }
     })
-
+        .then(kudos =>
+            kudos.map(kudo => `${kudo._id} ${kudo.text} (recipient: ${kudo.recipient})`)
+                .join('\n')
+        )
 }
