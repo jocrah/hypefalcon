@@ -2,4 +2,4 @@
 const kudoModel = require('../../models/kudos')()
 
 module.exports = kudoId =>
-    kudoModel.remove({ _id: kudoId })
+    kudoModel.remove({ _id: kudoId }).then(() => 'kudo successfully rescinded.')

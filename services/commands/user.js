@@ -9,6 +9,8 @@ module.exports = userId => {
         sort: {
             createdAt: -1
         }
-    })
+    }).then(kudos =>
+        kudos.map(kudo => `[${kudo._id}] ${kudo.text}`).join('\n')
+    )
 
 }

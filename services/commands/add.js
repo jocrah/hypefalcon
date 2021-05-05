@@ -6,5 +6,7 @@ module.exports = text => {
     return kudoModel.create({
         text: kudoText,
         recipient: slackRecipientId
-    })
+    }).then(() =>
+        `${slackRecipientId} just received a kudo from you!`
+    )
 }
