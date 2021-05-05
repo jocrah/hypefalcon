@@ -2,10 +2,10 @@
 
 const commands = require('./services/commands')
 
-const processData = async (data) => {
+const processData = (data) => {
     const text = data.text
     const [command, additionalText] = text.split(/ (.+)/)
-    await commands(command)(additionalText)
+    return commands(command)(additionalText)
 }
 
 module.exports = {
