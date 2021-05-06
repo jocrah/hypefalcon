@@ -1,6 +1,5 @@
 const test = require('tape')
 const help = require('./help')
-const assert = require('assert')
 
 test('should be a function', (t) => {
     t.plan(1)
