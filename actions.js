@@ -10,6 +10,7 @@ const processData = (req, res, next) => {
             response_type: 'in_channel',
             ...response && { text: response }
         }))
+        .catch(next)
 }
 
 module.exports = {
