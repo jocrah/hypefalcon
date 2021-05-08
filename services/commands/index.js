@@ -1,4 +1,5 @@
 'use strict'
+const platforms = require('../platforms')
 
 const commands = {
     add: require('./add'),
@@ -14,4 +15,17 @@ const commandNotFoundError = () => {
     throw Error('command not found')
 }
 
-module.exports = command => commands[command] || commandNotFoundError()
+const commandsRequiringPlatformId = ['add', 'user']
+
+module.exports = async ({ platform, textPayload, workspaceId }) => {
+    let userId
+
+    const [command, text] = textPayload.split(/ (.+)/)
+
+    if (commandsRequiringPlatformId.includes(command)) {
+        const [handle,] = text.split(/ (.+)/)
+        userId = await platforms(platform).getUserId(handle.substring(1))
+    }
+
+    return commands[command]({ text, userId, platform, workspaceId }) || commandNotFoundError()
+}

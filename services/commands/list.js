@@ -11,5 +11,13 @@ module.exports = async text => {
         },
         ...limit && { limit }
     })
+        .then(kudos => {
+            if (!kudos.length) { return `There are currently no kudos` }
+            const title = '*Current List of Kudos*'
+            const kudoResponse = kudos.map(kudo => `[${kudo._id}] ${kudo.text} (recipient: <@${kudo.recipient}>)`)
+                .join('\n')
 
+            return `${title}\n${kudoResponse}`
+
+        })
 }
