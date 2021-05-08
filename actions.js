@@ -1,11 +1,12 @@
 'use strict'
 
-const commands = require('./services/commands')
+const commandService = require('./services/commands')
 
 const processData = (req, res, next) => {
-    const { text } = req.body
-    const [command, additionalText] = text.split(/ (.+)/)
-    return commands(command)(additionalText)
+    const { team_id: workspaceId, text } = req.body
+    const { platform } = req.params
+
+    return commandService({ platform, textPayload: text, workspaceId })
         .then(response => res.status(200).json({
             response_type: 'in_channel',
             ...response && { text: response }
