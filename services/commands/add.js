@@ -1,12 +1,15 @@
 'use strict'
 const kudoModel = require('../../models/kudos')()
 
-module.exports = text => {
-    const [slackRecipientId, kudoText] = text.split(/ (.+)/)
+module.exports = ({ text, userId, platform, workspaceId }) => {
+    const [, kudoText] = text.split(/ (.+)/)
+
     return kudoModel.create({
         text: kudoText,
-        recipient: slackRecipientId
+        recipient: userId,
+        platform,
+        workspace: workspaceId
     }).then(() =>
-        `${slackRecipientId} just received a kudo from you!`
+        `<@${userId}> just received a kudo from you!`
     )
 }
