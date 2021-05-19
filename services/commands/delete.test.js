@@ -1,5 +1,5 @@
 const test = require('tape')
-const add = require('./add')
+const deleteKudo = require('./delete')
 const utils = require('../../test/utils')
 const kudoModel = require('../../models/kudos')()
 
@@ -11,40 +11,47 @@ test('before', async function (t) {
 
 test('should be a function', (t) => {
     t.plan(1)
-    t.equal(typeof add, 'function')
+    t.equal(typeof deleteKudo, 'function')
 })
 
 test('should successfully add new kudo', async (t) => {
     t.plan(1)
-    await add({
-        text: '@pbritwum nice one',
+    const result = await kudoModel.create({
+        text: 'nice one',
+        recipient: '123a',
         platform: 'slack',
-        userId: '123a',
-        workspaceId: '123b'
+        workspace: '123b'
     })
 
-    const savedKudo = await kudoModel.get({
+    await deleteKudo({
+        text: result._id
+    })
+
+    const kudo = await kudoModel.get({
         text: 'nice one',
         platform: 'slack',
         userId: '123a',
         workspaceId: '123b'
     })
 
-    t.ok(savedKudo)
+    t.notOk(kudo)
 })
 
 test('should return right response', async (t) => {
     t.plan(1)
 
-    const userId = '321a'
-    const result = await add({
-        text: '@pbritwum great stuff!',
+    const savedKudo = await kudoModel.create({
+        text: 'nice one',
+        recipient: '123a',
         platform: 'slack',
-        userId,
-        workspaceId: '321b'
+        workspace: '123b'
     })
 
-    t.equal(result, `<@${userId}> just received a kudo from you!`)
+    const result = await deleteKudo({
+        text: savedKudo._id
+    })
+
+    t.equal(result, 'Kudo successfully rescinded.')
 })
 
 
