@@ -21,6 +21,10 @@ const kudoModel = {
         })
     },
 
+    get({ query }) {
+        return model.findOne(query)
+    },
+
     remove(query) {
         return model.deleteOne(query)
     },
