@@ -19,7 +19,3 @@ jobs:
       - run: npm ci
       - run: npm run build --if-present
       - run: npm test
-        env:
-          MONGODB_URL:mongodb://localhost:27017/hypefalcon
-          SLACK_OAUTH_TOKEN:xxx-token
-
