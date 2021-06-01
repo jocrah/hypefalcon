@@ -1,0 +1,27 @@
+name: hypefalcon CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  container-job:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:3.4.23
+        ports:
+          - 27017:27017
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 10.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+      - run: npm ci
+      - run: npm test
+        env:
+          MONGODB_URL: mongodb://localhost:27017/hypefalcon
+          SLACK_OAUTH_TOKEN: xxx-token
