@@ -39,8 +39,6 @@ test('should return right response if there are kudos', async (t) => {
         })
     }))
 
-    console.log({ savedKudos })
-
     const result = await user({ userId: recipient })
 
     const title = `<@${recipient}>'s *Kudos*`
