@@ -4,7 +4,8 @@
     "description": "Slack bot to recognize team effort",
     "main": "index.js",
     "scripts": {
-        "test": "tape \"./!(node_modules)/**/*.test.js\""
+        "test": "tape \"./!(node_modules)/**/*.test.js\"",
+        "start": "node index.js"
     },
     "repository": {
         "type": "git",
