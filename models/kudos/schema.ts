@@ -1,8 +1,13 @@
 'use strict'
+import { Schema, model, Document } from 'mongoose'
+interface Kudo extends Document {
+    recipient: string,
+    text: string,
+    platform: string,
+    workspace: string
+}
 
-const mongoose = require('mongoose')
-
-const schema = new mongoose.Schema({
+const schema = new Schema<Kudo>({
     recipient: { type: String, required: true },
     text: { type: String, required: true },
     platform: { type: String, enum: ['slack'], required: true },
@@ -11,4 +16,4 @@ const schema = new mongoose.Schema({
     { timestamps: true }
 )
 
-module.exports = mongoose.model('Kudo', schema)
+module.exports = model<Kudo>('Kudo', schema)

@@ -1,7 +1,8 @@
 'use strict'
 const kudoModel = require('../../models/kudos')()
 
-module.exports = ({ text, userId, platform, workspaceId }) => {
+module.exports = (payload: { text: string, userId: string, platform: string, workspaceId: string }): string => {
+    const { text, userId, platform, workspaceId } = payload
     const [, kudoText] = text.split(/ (.+)/)
 
     return kudoModel.create({

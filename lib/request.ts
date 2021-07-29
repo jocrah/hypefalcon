@@ -1,25 +1,25 @@
 'use strict'
 
-const got = require('got')
+import got, { Method, ResponseType } from 'got'
+
+interface Params {
+    uri: string,
+    form: object,
+    method: Method,
+    responseType: ResponseType
+}
 
 const request = ({
     uri,
-    body,
     form,
-    json,
-    query = {},
-    headers,
     method = 'POST',
     responseType = 'json'
-}) =>
-    got(uri, {
-        json,
+}: Params) => {
+    return got(uri, {
         form,
-        body,
-        searchParams: query,
         method,
-        headers,
         responseType
     }).then(response => response.body)
+}
 
 module.exports = request

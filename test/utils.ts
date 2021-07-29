@@ -1,3 +1,4 @@
+export { }
 'use strict'
 const mongoose = require('mongoose')
 
@@ -7,7 +8,7 @@ const config = require('../config')
 const customMongoDBUrl = `${config('MONGODB_URL')}-test`
 
 module.exports = {
-    dbSetup: async () => {
+    dbSetup: async (): Promise<void> => {
         if (!db.isConnected()) {
             await db.connect(customMongoDBUrl)
         }

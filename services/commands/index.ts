@@ -1,7 +1,11 @@
 'use strict'
 const platforms = require('../platforms')
 
-const commands = {
+type Commands = {
+    [key: string]: Function
+}
+
+const commands: Commands = {
     add: require('./add'),
     replace: require('./replace'),
     delete: require('./delete'),
@@ -17,7 +21,8 @@ const commandNotFoundError = () => {
 
 const commandsRequiringPlatformId = ['add', 'user']
 
-module.exports = async ({ platform, textPayload, workspaceId }) => {
+module.exports = async (payload: { platform: string, textPayload: string, workspaceId: string }) => {
+    const { platform, textPayload, workspaceId } = payload
     let userId
 
     const [command, text] = textPayload.split(/ (.+)/)

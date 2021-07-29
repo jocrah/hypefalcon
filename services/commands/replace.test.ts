@@ -1,6 +1,6 @@
 'use strict'
 
-const test = require('tape')
+import test from 'tape'
 const replace = require('./replace')
 const kudoModel = require('../../models/kudos')()
 const utils = require('../../test/utils')

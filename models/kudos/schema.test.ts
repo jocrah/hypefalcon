@@ -2,8 +2,7 @@
 
 
 const { schema } = require('./schema')
-const test = require('tape')
-
+import test from 'tape'
 const kudoPath = schema.paths
 
 test('recipient should be a string', (t) => {
