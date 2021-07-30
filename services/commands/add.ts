@@ -1,11 +1,11 @@
-'use strict'
-const kudoModel = require('../../models/kudos')()
 
-module.exports = (payload: { text: string, userId: string, platform: string, workspaceId: string }): string => {
+import kudoModel from '../../models/kudos'
+
+export default (payload: { text: string, userId: string, platform: string, workspaceId: string }): Promise<string> => {
     const { text, userId, platform, workspaceId } = payload
     const [, kudoText] = text.split(/ (.+)/)
 
-    return kudoModel.create({
+    return kudoModel().create({
         text: kudoText,
         recipient: userId,
         platform,

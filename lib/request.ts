@@ -1,12 +1,19 @@
-'use strict'
-
-import got, { Method, ResponseType } from 'got'
+import got, { Method, ResponseType, Response } from 'got'
 
 interface Params {
     uri: string,
     form: object,
-    method: Method,
-    responseType: ResponseType
+    method?: Method,
+    responseType?: ResponseType
+}
+
+type Member = {
+    name: string,
+    id: string
+}
+
+type ResponseBody = {
+    members: Member[]
 }
 
 const request = ({
@@ -19,7 +26,7 @@ const request = ({
         form,
         method,
         responseType
-    }).then(response => response.body)
+    }).json<ResponseBody>()
 }
 
-module.exports = request
+export default request

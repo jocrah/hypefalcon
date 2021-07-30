@@ -1,4 +1,4 @@
-'use strict'
+
 const platforms = require('../platforms')
 
 type Commands = {

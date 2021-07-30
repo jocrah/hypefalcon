@@ -1,6 +1,4 @@
-'use strict'
-
-module.exports = (): string => {
+export default (): string => {
     return `
 Want to congratulate a team member? Do \`\kudo add @teammember <text>\`
 Want to list a number of recent kudos? Do \`\kudo list <number>\`. use \`*\` in place of \`<number>\` to list all

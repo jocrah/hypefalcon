@@ -1,5 +1,5 @@
 import test from 'tape'
-const help = require('./help')
+import help from './help'
 
 test('should be a function', (t) => {
     t.plan(1)

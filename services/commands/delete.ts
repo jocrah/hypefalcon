@@ -1,6 +1,4 @@
-export { }
-'use strict'
-const kudoModel = require('../../models/kudos')()
+import kudoModel from '../../models/kudos'
 
-module.exports = ({ text }: { text: string }): string =>
-    kudoModel.remove({ _id: text }).then(() => 'Kudo successfully rescinded.')
+export default ({ text }: { text: string }): Promise<string> =>
+    kudoModel().remove({ _id: text }).then(() => 'Kudo successfully rescinded.')

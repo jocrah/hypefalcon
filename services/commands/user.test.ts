@@ -1,10 +1,9 @@
-'use strict'
+
 
 import test from 'tape'
-const user = require('./user')
-const kudoModel = require('../../models/kudos')()
-const utils = require('../../test/utils')
-const delay = require('util').promisify(setTimeout)
+import user from './user'
+import kudoModel from '../../models/kudos'
+import utils from '../../test/utils'
 
 test('before', async (t) => {
     t.plan(1)
@@ -31,7 +30,7 @@ test('should return right response if there are kudos', async (t) => {
     const recipient = 'mank'
 
     const savedKudos = await Promise.all([...Array(2)].map(async () => {
-        return kudoModel.create({
+        return kudoModel().create({
             text: 'good product',
             recipient,
             platform: 'slack',

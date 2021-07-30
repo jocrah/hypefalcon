@@ -1,9 +1,6 @@
-export { }
-'use strict'
-
-const express = require('express')
-const bodyParser = require('body-parser')
-const { processData } = require('./actions')
+import express from 'express'
+import bodyParser from 'body-parser'
+import { processData } from './actions'
 const app = express()
 
 app.use(bodyParser.urlencoded({ extended: true }))

@@ -1,8 +1,7 @@
-'use strict'
-import express from "express"
+import { Request, Response, NextFunction } from "express"
 const commandService = require('./services/commands')
 
-const processData = (req: express.Request, res: express.Response, next: Function) => {
+const processData = (req: Request, res: Response, next: NextFunction) => {
     const { team_id: workspaceId, text } = req.body
     const { platform } = req.params
 
@@ -14,6 +13,6 @@ const processData = (req: express.Request, res: express.Response, next: Function
         .catch(next)
 }
 
-module.exports = {
+export {
     processData
 }
