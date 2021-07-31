@@ -9,7 +9,7 @@ module.exports = async (text: string) => {
     let limit
     if (text !== '*') { limit = parseInt(text) }
     return kudoModel().groupCountByField({ field: 'recipient', limit })
-        .then((kudoRanks: Array<KudoRank>) => {
+        .then((kudoRanks: KudoRank[]) => {
             if (!kudoRanks.length) { return 'There are currently no kudos' }
 
             const title = '*Kudos Leaderboard*'

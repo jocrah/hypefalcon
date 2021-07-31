@@ -30,7 +30,7 @@ const kudoModel = {
     },
 
     groupCountByField({ field, limit }: { field: string, limit?: number }) {
-        const aggregationPipeline: Array<Object> = [
+        const aggregationPipeline: Object[] = [
             { '$sortByCount': `$${field}` }
         ]
 
