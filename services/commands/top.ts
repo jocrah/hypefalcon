@@ -5,7 +5,7 @@ type KudoRank = {
     _id: string
 }
 
-module.exports = async (text: string) => {
+export default async (text: string) => {
     let limit
     if (text !== '*') { limit = parseInt(text) }
     return kudoModel().groupCountByField({ field: 'recipient', limit })

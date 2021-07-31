@@ -5,13 +5,13 @@ type Commands = {
 }
 
 const commands: Commands = {
-    add: require('./add'),
-    replace: require('./replace'),
-    delete: require('./delete'),
-    user: require('./user'),
-    list: require('./list'),
-    top: require('./top'),
-    help: require('./help')
+    add: require('./add').default,
+    replace: require('./replace').default,
+    delete: require('./delete').default,
+    user: require('./user').default,
+    list: require('./list').default,
+    top: require('./top').default,
+    help: require('./help').default
 }
 
 const commandNotFoundError = () => {
@@ -20,7 +20,7 @@ const commandNotFoundError = () => {
 
 const commandsRequiringPlatformId = ['add', 'user']
 
-module.exports = async (payload: { platform: string, textPayload: string, workspaceId: string }) => {
+export default async (payload: { platform: string, textPayload: string, workspaceId: string }) => {
     const { platform, textPayload, workspaceId } = payload
     let userId
 
