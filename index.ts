@@ -1,4 +1,4 @@
-const app = require('./app')
+import app from './app'
 import db from './lib/resources/db'
 const port = 8000
 

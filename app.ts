@@ -6,4 +6,4 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: true }))
     .post('/kudos/:platform', processData)
 
-module.exports = app
+export default app
