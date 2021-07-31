@@ -1,5 +1,3 @@
-
-
 import test from 'tape'
 import user from './user'
 import kudoModel from '../../models/kudos'

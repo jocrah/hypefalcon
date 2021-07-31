@@ -1,4 +1,3 @@
-
 import test from 'tape'
 import list from './list'
 import utils from '../../test/utils'

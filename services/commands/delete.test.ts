@@ -1,4 +1,3 @@
-
 import test from 'tape'
 import deleteKudo from './delete'
 import utils from '../../test/utils'

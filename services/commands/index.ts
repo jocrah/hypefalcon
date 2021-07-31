@@ -1,4 +1,3 @@
-
 const platforms = require('../platforms')
 
 type Commands = {

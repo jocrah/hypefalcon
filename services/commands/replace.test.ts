@@ -1,5 +1,3 @@
-
-
 import test from 'tape'
 import replace from './replace'
 import kudoModel from '../../models/kudos'

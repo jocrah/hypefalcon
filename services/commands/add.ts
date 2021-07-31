@@ -1,4 +1,3 @@
-
 import kudoModel from '../../models/kudos'
 
 export default (payload: { text: string, userId: string, platform: string, workspaceId: string }): Promise<string> => {

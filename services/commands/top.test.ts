@@ -1,5 +1,3 @@
-
-
 import test from 'tape'
 const top = require('./top')
 import kudoModel from '../../models/kudos'

@@ -1,4 +1,3 @@
-
 import model, { Kudo } from './schema'
 import { FilterQuery } from 'mongoose'
 

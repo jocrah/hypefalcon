@@ -1,4 +1,3 @@
-
 import kudoModel from '../../models/kudos'
 
 export default async ({ text }: { text: string }) => {

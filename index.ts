@@ -1,5 +1,3 @@
-
-
 const app = require('./app')
 import db from './lib/resources/db'
 const port = 8000
