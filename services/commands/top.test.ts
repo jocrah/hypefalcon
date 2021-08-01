@@ -1,9 +1,7 @@
-'use strict'
-
-const test = require('tape')
-const top = require('./top')
-const kudoModel = require('../../models/kudos')()
-const utils = require('../../test/utils')
+import test from 'tape'
+import top from './top'
+import kudoModel from '../../models/kudos'
+import utils from '../../test/utils'
 
 test('before', async (t) => {
     t.plan(1)
@@ -27,7 +25,7 @@ test('should return right response if there are kudos', async (t) => {
     t.plan(1)
 
     const firstRecipient = 'mank'
-    await Promise.all([...Array(2)].map(() => kudoModel.create({
+    await Promise.all([...Array(2)].map(() => kudoModel().create({
         text: 'good product',
         recipient: firstRecipient,
         platform: 'slack',
@@ -35,7 +33,7 @@ test('should return right response if there are kudos', async (t) => {
     })))
 
     const secondRecipient = 'oswell'
-    await kudoModel.create({
+    await kudoModel().create({
         text: 'wonderful customer service',
         recipient: secondRecipient,
         platform: 'slack',

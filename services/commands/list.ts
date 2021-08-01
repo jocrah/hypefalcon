@@ -1,10 +1,9 @@
-'use strict'
-const kudoModel = require('../../models/kudos')()
+import kudoModel from '../../models/kudos'
 
-module.exports = async ({ text }) => {
+export default async ({ text }: { text: string }) => {
     let limit
     if (text !== '*') { limit = parseInt(text) }
-    return kudoModel.fetch({
+    return kudoModel().fetch({
         query: {},
         sort: {
             createdAt: -1

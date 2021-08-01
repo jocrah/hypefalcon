@@ -1,36 +1,35 @@
-'use strict'
-
-const model = require('./schema')
+import model, { Kudo } from './schema'
+import { FilterQuery } from 'mongoose'
 
 const kudoModel = {
-    create(document) {
+    create(document: Kudo) {
         return model.create(document)
     },
 
-    updateById(id, update) {
+    updateById(id: string, update: object) {
         return model.findByIdAndUpdate(id, update, {
             new: true,
             lean: true
         })
     },
 
-    fetch({ query, sort, limit }) {
+    fetch({ query, sort, limit }: { query: object, sort: object, limit?: number }) {
         return model.find(query, null, {
             ...sort && { sort },
             ...limit && { limit }
         })
     },
 
-    get({ query }) {
+    get(query: object) {
         return model.findOne(query)
     },
 
-    remove(query) {
+    remove(query: FilterQuery<Kudo>) {
         return model.deleteOne(query)
     },
 
-    groupCountByField({ field, limit }) {
-        const aggregationPipeline = [
+    groupCountByField({ field, limit }: { field: string, limit?: number }) {
+        const aggregationPipeline: Object[] = [
             { '$sortByCount': `$${field}` }
         ]
 
@@ -42,4 +41,5 @@ const kudoModel = {
     }
 }
 
-module.exports = () => kudoModel
+export { Kudo }
+export default () => kudoModel

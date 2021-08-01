@@ -1,9 +1,7 @@
-'use strict'
+import request from '../../lib/request'
+import config from '../../config'
 
-const request = require('../../lib/request')
-const config = require('../../config')
-
-const getUserId = handle => {
+const getUserId = (handle: string) => {
     return request({
         uri: 'https://slack.com/api/users.list',
         form: {
@@ -17,6 +15,6 @@ const getUserId = handle => {
     })
 }
 
-module.exports = () => ({
+export default () => ({
     getUserId
 })

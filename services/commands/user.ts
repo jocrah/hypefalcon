@@ -1,8 +1,7 @@
-'use strict'
-const kudoModel = require('../../models/kudos')()
+import kudoModel from '../../models/kudos'
 
-module.exports = ({ userId }) => {
-    return kudoModel.fetch({
+export default ({ userId }: { userId: string }) => {
+    return kudoModel().fetch({
         query: {
             recipient: userId
         },

@@ -1,7 +1,7 @@
-const test = require('tape')
-const add = require('./add')
-const utils = require('../../test/utils')
-const kudoModel = require('../../models/kudos')()
+import test from 'tape'
+import add from './add'
+import utils from '../../test/utils'
+import kudoModel from '../../models/kudos'
 
 test('before', async function (t) {
     t.plan(1)
@@ -23,11 +23,11 @@ test('should successfully add new kudo', async (t) => {
         workspaceId: '123b'
     })
 
-    const savedKudo = await kudoModel.get({
+    const savedKudo = await kudoModel().get({
         text: 'nice one',
         platform: 'slack',
-        userId: '123a',
-        workspaceId: '123b'
+        recipient: '123a',
+        workspace: '123b'
     })
 
     t.ok(savedKudo)

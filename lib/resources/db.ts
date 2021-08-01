@@ -1,17 +1,15 @@
-'use strict'
-
-const mongoose = require('mongoose')
-const config = require('../../config')
+import mongoose from 'mongoose'
+import config from '../../config'
 
 const MONGODB_URL = config('MONGODB_URL')
 
-module.exports = {
-    connect: (customMongoDBUrl) => {
+export default {
+    connect: (customMongoDBUrl?: string) => {
         return mongoose.connect(customMongoDBUrl || MONGODB_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false
         })
     },
-    isConnected: () => mongoose.connection.readyState === 1
+    isConnected: (): boolean => mongoose.connection.readyState === 1
 }

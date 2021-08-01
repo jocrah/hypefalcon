@@ -1,11 +1,15 @@
-'use strict'
-const kudoModel = require('../../models/kudos')()
+import kudoModel from '../../models/kudos'
 
-module.exports = async text => {
+type KudoRank = {
+    count: number,
+    _id: string
+}
+
+export default async (text: string) => {
     let limit
     if (text !== '*') { limit = parseInt(text) }
-    return kudoModel.groupCountByField({ field: 'recipient', limit })
-        .then(kudoRanks => {
+    return kudoModel().groupCountByField({ field: 'recipient', limit })
+        .then((kudoRanks: KudoRank[]) => {
             if (!kudoRanks.length) { return 'There are currently no kudos' }
 
             const title = '*Kudos Leaderboard*'

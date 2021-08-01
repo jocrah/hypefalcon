@@ -1,7 +1,7 @@
-const test = require('tape')
-const deleteKudo = require('./delete')
-const utils = require('../../test/utils')
-const kudoModel = require('../../models/kudos')()
+import test from 'tape'
+import deleteKudo from './delete'
+import utils from '../../test/utils'
+import kudoModel from '../../models/kudos'
 
 test('before', async function (t) {
     t.plan(1)
@@ -16,7 +16,7 @@ test('should be a function', (t) => {
 
 test('should successfully add new kudo', async (t) => {
     t.plan(1)
-    const result = await kudoModel.create({
+    const result = await kudoModel().create({
         text: 'nice one',
         recipient: '123a',
         platform: 'slack',
@@ -27,7 +27,7 @@ test('should successfully add new kudo', async (t) => {
         text: result._id
     })
 
-    const kudo = await kudoModel.get({
+    const kudo = await kudoModel().get({
         text: 'nice one',
         platform: 'slack',
         userId: '123a',
@@ -40,7 +40,7 @@ test('should successfully add new kudo', async (t) => {
 test('should return right response', async (t) => {
     t.plan(1)
 
-    const savedKudo = await kudoModel.create({
+    const savedKudo = await kudoModel().create({
         text: 'nice one',
         recipient: '123a',
         platform: 'slack',

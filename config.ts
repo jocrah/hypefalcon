@@ -1,12 +1,12 @@
-'use strict'
-
 if (!process.env.NODE_ENV) { process.env.NODE_ENV = 'development' }
 
 if (process.env.NODE_ENV === 'development') { require('dotenv').config() }
 
-module.exports = key => {
-    if (process.env[key] === undefined) {
+export default (key: string): string => {
+    const value = process.env[key]
+    if (value === undefined) {
         throw new Error(`No config for env variable ${key}`)
+    } else {
+        return value
     }
-    return process.env[key]
 }
