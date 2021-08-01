@@ -1,4 +1,4 @@
-const platforms = require('../platforms')
+import platforms from '../platforms'
 
 type Commands = {
     [key: string]: Function
