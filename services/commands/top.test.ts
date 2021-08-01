@@ -1,5 +1,5 @@
 import test from 'tape'
-const top = require('./top')
+import top from './top'
 import kudoModel from '../../models/kudos'
 import utils from '../../test/utils'
 
