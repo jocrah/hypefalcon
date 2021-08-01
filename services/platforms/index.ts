@@ -1,5 +1,9 @@
+type PlatformFunctions = {
+    getUserId: Function
+}
+
 type Platforms = {
-    [key: string]: Function
+    [key: string]: PlatformFunctions
 }
 
 const platforms: Platforms = {
