@@ -1,19 +1,19 @@
-import model, { Kudo } from './schema'
-import { FilterQuery } from 'mongoose'
+import model, { Kudo, KudoDocument } from './schema'
+import { FilterQuery, UpdateQuery } from 'mongoose'
 
 const kudoModel = {
     create(document: Kudo) {
         return model.create(document)
     },
 
-    updateById(id: string, update: object) {
+    updateById(id: string, update: UpdateQuery<KudoDocument>) {
         return model.findByIdAndUpdate(id, update, {
             new: true,
             lean: true
         })
     },
 
-    fetch({ query, sort, limit }: { query: object, sort: object, limit?: number }) {
+    fetch({ query, sort, limit }: { query: FilterQuery<KudoDocument>, sort: object, limit?: number }) {
         return model.find(query, null, {
             ...sort && { sort },
             ...limit && { limit }
@@ -24,7 +24,7 @@ const kudoModel = {
         return model.findOne(query)
     },
 
-    remove(query: FilterQuery<Kudo>) {
+    remove(query: FilterQuery<KudoDocument>) {
         return model.deleteOne(query)
     },
 

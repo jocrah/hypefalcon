@@ -6,7 +6,7 @@ export interface Kudo {
     workspace: string
 }
 
-interface KudoDocument extends Kudo, Document { }
+export interface KudoDocument extends Kudo, Document { }
 
 export const schema = new Schema<KudoDocument>({
     recipient: { type: String, required: true },
