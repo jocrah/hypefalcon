@@ -1,19 +1,10 @@
-import got, { Method, ResponseType, Response } from 'got'
+import got, { Method, ResponseType } from 'got'
 
-interface Params {
+type Params = {
     uri: string,
     form: object,
     method?: Method,
     responseType?: ResponseType
-}
-
-type Member = {
-    name: string,
-    id: string
-}
-
-type ResponseBody = {
-    members: Member[]
 }
 
 const request = ({
@@ -26,7 +17,7 @@ const request = ({
         form,
         method,
         responseType
-    }).json<ResponseBody>()
+    }).json()
 }
 
 export default request

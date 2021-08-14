@@ -1,7 +1,7 @@
 import test from 'tape'
-import list from './list'
-import utils from '../../test/utils'
-import kudoModel from '../../models/kudos'
+import list from '../list'
+import utils from '../../../test/utils'
+import kudoModel from '../../../models/kudos'
 
 test('before', async (t) => {
     t.plan(1)

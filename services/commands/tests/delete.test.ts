@@ -1,7 +1,7 @@
 import test from 'tape'
-import deleteKudo from './delete'
-import utils from '../../test/utils'
-import kudoModel from '../../models/kudos'
+import deleteKudo from '../delete'
+import utils from '../../../test/utils'
+import kudoModel from '../../../models/kudos'
 
 test('before', async function (t) {
     t.plan(1)
@@ -14,7 +14,7 @@ test('should be a function', (t) => {
     t.equal(typeof deleteKudo, 'function')
 })
 
-test('should successfully add new kudo', async (t) => {
+test('should successfully delete kudo', async (t) => {
     t.plan(1)
     const result = await kudoModel().create({
         text: 'nice one',

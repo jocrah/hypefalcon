@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express"
-import commandService from './services/commands'
+import services from './services'
+
+const { commands: commandService } = services()
 
 const processData = (req: Request, res: Response, next: NextFunction) => {
     const { team_id: workspaceId, text } = req.body
