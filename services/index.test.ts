@@ -8,8 +8,7 @@ test('should be a function', (t) => {
 })
 
 test('should export commands function', (t) => {
-    t.plan(2)
-    t.deepEqual(Object.keys(services()), ['commands'])
+    t.plan(1)
     t.equal(typeof services().commands, 'function')
 })
 
