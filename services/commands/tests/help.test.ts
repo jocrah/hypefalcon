@@ -1,5 +1,5 @@
 import test from 'tape'
-import help from './help'
+import help from '../help'
 
 test('should be a function', (t) => {
     t.plan(1)
