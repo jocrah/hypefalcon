@@ -4,8 +4,8 @@
     "description": "Slack bot to recognize team effort",
     "main": "index.js",
     "scripts": {
-        "test:services": "ts-node node_modules/tape/bin/tape \"./services/**/*.test.ts\"",
-        "test:api": "ts-node node_modules/tape/bin/tape \"./!(node_modules)*.test.ts\"",
+        "test:services": "ts-node node_modules/tape/bin/tape --no-only \"./services/**/*.test.ts\"",
+        "test:api": "ts-node node_modules/tape/bin/tape --no-only \"./!(node_modules)*.test.ts\"",
         "test": "npm run test:services && npm run test:api",
         "build": "tsc",
         "prestart": "npm run build",
@@ -45,7 +45,7 @@
         "faucet": "0.0.1",
         "nock": "^13.1.1",
         "supertest": "^6.1.3",
-        "tape": "^5.2.2",
+        "tape": "^5.5.0",
         "ts-node": "^10.1.0",
         "typescript": "^4.3.5"
     }
