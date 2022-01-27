@@ -4,7 +4,7 @@ const { api, interceptors } = utils
 import kudoModel from './models/kudos'
 import ObjectId from 'bson-objectid'
 
-test.only('before', async function (t) {
+test('before', async function (t) {
     t.plan(1)
     await utils.dbSetup()
     t.ok(1)
