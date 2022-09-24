@@ -1,5 +1,5 @@
 import model, { Kudo, KudoDocument } from './schema'
-import { FilterQuery, UpdateQuery } from 'mongoose'
+import { FilterQuery, PipelineStage, UpdateQuery } from 'mongoose'
 
 const kudoModel = {
     create(document: Kudo) {
@@ -29,7 +29,7 @@ const kudoModel = {
     },
 
     groupCountByField({ field, limit }: { field: string, limit?: number }) {
-        const aggregationPipeline: Object[] = [
+        const aggregationPipeline: PipelineStage[] = [
             { '$sortByCount': `$${field}` }
         ]
 
